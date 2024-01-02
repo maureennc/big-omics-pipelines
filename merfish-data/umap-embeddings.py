@@ -7,6 +7,15 @@ Created on Sat Dec 30 18:09:41 2023
 @author: maureen
 """
 
+##################################################################
+
+# BEGIN
+
+## This script calculates UMAP embeddings from different AnnData layers in a list of AnnData objects and plots them, colored by doublet score. The code is for calculating embeddings prior to running PCA.
+
+##################################################################
+
+
 import pandas as pd
 import umap
 import seaborn as sns
@@ -17,13 +26,20 @@ import matplotlib.pyplot as plt
 
 # IMPORT DATA
 
-#import scanpy as sc
+## Starting point is filtered, normalized, scaled data with doublet excluded (checkpoint_A)
 
-#adata1 = 
-#adata2 =
-#adata3 =
-#adata4 =
-#adata5 =
+import os
+os.chdir("/Users/maureen/Documents/data-experiments/merfish/h5ad-files/checkpoint_A/")
+
+import scanpy as sc
+
+adata1 = sc.read_h5ad('./adata1_post_scaling.h5ad')
+adata2 = sc.read_h5ad('./adata2_post_scaling.h5ad')
+adata3 = sc.read_h5ad('./adata3_post_scaling.h5ad')
+adata4 = sc.read_h5ad('./adata4_post_scaling.h5ad')
+adata5 = sc.read_h5ad('./adata5_post_scaling.h5ad')
+
+adata_list = [adata1, adata2, adata3, adata4, adata5]
 
 ##################################################################
 
@@ -41,7 +57,7 @@ def compute_umap_and_collect(adata, adata_index, layer_name):
     reducer = umap.UMAP(random_state=42, n_components=2)
     embedding = reducer.fit_transform(data)
 
-    # Combine UMAP coordinates with cell barcodes
+    # Combine UMAP coordinates with cell barcodes for mapping
     umap_df = pd.DataFrame(embedding, columns=['UMAP1', 'UMAP2'], index=adata.obs.index)
     umap_df['Sample_Index'] = adata_index
     umap_df['Layer'] = layer_name
@@ -64,17 +80,15 @@ def create_master_umap_df(adata_list, layer_names):
 # Define the layers for which you want to create UMAP embeddings
 layer_names = ['raw_filtered', 'normalized', 'logarithmized', 'scaled']
 
-
-
-adata_list = [adata1, adata2, adata3, adata4, adata5]
 master_umap_df = create_master_umap_df(adata_list, layer_names)
+
 
 ##################################################################
 
 # DATA VISUALIZATION
 
 
-## Plot UMAP Results
+## Plot UMAP Results for each layer, colored by doublet score
 
 def plot_umap_for_sample_and_layer(master_df, sample_index, layer_name, doublet_scores_column='Doublet_Scores'):
     # Filter the DataFrame for the specified layer and sample
@@ -86,7 +100,7 @@ def plot_umap_for_sample_and_layer(master_df, sample_index, layer_name, doublet_
     plt.title(f'UMAP for Sample {sample_index + 1}, {layer_name} layer')
     plt.xlabel('UMAP1')
     plt.ylabel('UMAP2')
-    plt.grid(False)  # Turn off the grid
+    plt.grid(False)
     plt.show()
 
 def plot_all_samples_and_layers(master_df, layer_names, sample_count):
@@ -97,10 +111,14 @@ def plot_all_samples_and_layers(master_df, layer_names, sample_count):
 # Define the layers for which you want to create UMAP embeddings
 layer_names = ['raw_filtered', 'normalized', 'logarithmized', 'scaled']
 
-# Assume you have 5 samples in your master DataFrame
+# Set number of samples
 sample_count = 5
 
-# Example usage
+# Execute function
 plot_all_samples_and_layers(master_umap_df, layer_names, sample_count)
+
+##################################################################
+
+# END
 
 ##################################################################
