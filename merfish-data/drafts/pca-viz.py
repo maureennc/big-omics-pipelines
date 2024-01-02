@@ -41,7 +41,8 @@ def run_pca(adata_list, n_pcs=50):
     
     return adata_list #adata.varm should be added
 
-    
+run_pca(adata_list) 
+
 ##################################################################
 
 # SCREE PLOT
