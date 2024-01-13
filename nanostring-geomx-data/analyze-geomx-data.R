@@ -888,14 +888,4 @@ BC_SUS <- subset(results_BC, Subset == "Susentacular cells")
 #write.table(BC_OSN, './write/spreadsheets/OSN_virus_absent_vs_present.csv.csv', quote=FALSE, sep=",", row.names=FALSE, col.names=TRUE)
 #write.table(BC_SUS, './write/spreadsheets/SUS_virus_absent_vs_present.csv.csv', quote=FALSE, sep=",", row.names=FALSE, col.names=TRUE)
 
-
-#######################################################################################################
-
-
-
-#######################################################################################################
-
-
-
-
 #######################################################################################################
