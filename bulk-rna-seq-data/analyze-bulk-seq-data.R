@@ -19,11 +19,12 @@ library(dplyr)
 library(data.table)
 library(readr)
 
-setwd("/project/harrislab/naive_vs_infected_whole_brain/R") #run in console
-
 #######################################################################################################
 
 # SPECIFY FILES ON RIVANNA
+
+setwd("/project/harrislab/naive_vs_infected_whole_brain/R")
+
 sample_files <- c( "N1_salmon_quant", 
                    "N2_salmon_quant",
                    "N3_salmon_quant", 
