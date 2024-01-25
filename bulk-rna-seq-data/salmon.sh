@@ -3,7 +3,7 @@
 #SBATCH -n 7
 #SBATCH -t 05:00:00
 #SBATCH -p standard
-#SBATCH -A harrislab
+#SBATCH -A {account}
 #SBATCH --mem=75G
 
 module purge
