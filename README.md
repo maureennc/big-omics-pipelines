@@ -37,6 +37,5 @@ This section contains .yaml files for the conda virtual environments used on AWS
 This section houses scripts for using and manipulating data with different bioinformatics tools for single-cell analysis, including cellranger, velocyto, scrublet, and scvi-tools.
    
 ## 3. `visualization`
-This section is subdivided into scripts and figures related to visualizing high-dimensional data.
+This section is subdivided into scripts and figures related to visualizing high-dimensional data. Also see my [quick-guide instructions](visualization/instructions/vizgen-vizualizer-software-instructions.md) for using Vizgen's `Vizualizer` software for (1) interacting with MERFISH data, (2) importing processed .hdf5 files (cleaned and annotated data) into the software, and (3) using the GUI to create ad export polygon geometries for custom spatial analyses using spatial coordinates for compatibility with single-cell workflows.
 
-![single-cell figure 2](visualization/figures/umap-viz-merfish-pp.png)
