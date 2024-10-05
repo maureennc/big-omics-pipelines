@@ -20,20 +20,22 @@ Prepare and analyze Nanostring CosMx SMI data. Example workflow features Nanostr
 Prepare and analyze Nanostring GeoMx Digital Satial Profiler (DSP) data. GeoMx is an ROI-based spatial data is analyzed using the `GeoMx tools` bioconductor package. Workflow includes reading in data, filtering, Q3-normalization, and differential exprssion using LMMs. Featured dataset generated from the mouse olfactory system during SARS-CoV-2 infection (Lukens lab) and analysis performed in R. Given the use of three comparison groups, this dataset was amenable to advanced data visualization that included transformation of gene expression data into barycentric coordinates for three-way plotting using the [triwise](https://github.com/saeyslab/triwise) package. See [GeoMx analysis vignette](https://www.bioconductor.org/packages/release/workflows/vignettes/GeoMxWorkflows/inst/doc/GeomxTools_RNA-NGS_Analysis.html#Analyzing_GeoMx-NGS_RNA_Expression_Data_with_GeomxTools).
    
 ## 5. `scRNA-seq-data`
-Run cellranger and perform single-cell analysis on 10x Genomics data. Dataset features immune cells that were FACS-sorted from T. gondii-infected mouse brains (Harris lab). Data cleaning involves filtering on QC parameters using a dynamic quantile approach that scales to each sample, and scrublet for doublet detection. This section includes example scripts for cell type annotation and identification and differential expression. Trajectory inference analysis (RNA velocity) is performed to examine the microglial transition from homeostatic to a neurodegeneration-associated transcriptional state during parasitic infection using tools including samtools, velocyto and scVelo. Analysis performed in Python and visualization in R.
+Run cellranger and perform single-cell analysis on our in-house 10x Genomics data generated in collaboration with UVA's Genome Analysis and Technology Core (GATC). Dataset features immune cells that were FACS-sorted from T. gondii-infected mouse brains (Harris lab). Data cleaning involves filtering on QC parameters using a dynamic quantile approach that scales to each sample, and scrublet for doublet detection. This section includes example scripts for cell type annotation and identification and differential expression. Trajectory inference analysis (RNA velocity) is performed to examine the microglial transition from homeostatic to a neurodegeneration-associated transcriptional state during parasitic infection using tools including samtools, velocyto and scVelo. Analysis and visualization performed in Python and R.
 
 ![single-cell figure 1](visualization/figures/rna-velocity.png)
    
 ## 6. `snRNA-seq-data`
-Includes basic and in-depth analysis workflows using two datasets using genetic mouse models of Alzheimer's Disease (Lukens lab). The workflow for single nuclei RNA-sequencing data is very similar to single-cell, but with differences in the cell type composition due to the prep's ability to isolate nuclei from cells that do not otherwise dissociate well from tissue (neurons, astrocytes, etc) in addition to immune cells. For nuclear data there are additional considerations for QC parameters such as increased sparsity and lower mitochondrial read fraction. Analysis performed in Python and visualization in R.
+Includes basic and in-depth analysis workflows using two datasets using genetic mouse models of Alzheimer's Disease (Lukens lab). The workflow for single nuclei RNA-sequencing data is very similar to single-cell, but with differences in the cell type composition due to the prep's ability to isolate nuclei from cells that do not otherwise dissociate well from tissue (neurons, astrocytes, etc) in addition to immune cells. For nuclear data there are additional considerations like increased sparsity and QC parameters such as lower mitochondrial read fraction. Analysis performed in Python and visualization in R.
    
 
-# Other sections
+# Other
 ## 1. `envs`
 This section contains .yaml files for the conda virtual environments used on AWS, Rivanna HPC, and my local device (MacBook, M1 Max). Documenting specific versions of different packages is key for reproducibility.
 
 ## 2. `tools`
 This section houses scripts for using and manipulating data with different bioinformatics tools for single-cell analysis, including cellranger, velocyto, scrublet, and scvi-tools.
    
-## 3. `visualization`: 
-This section is subdivided into scripts and figures.
+## 3. `visualization`
+This section is subdivided into scripts and figures related to visualizing high-dimensional data.
+
+![single-cell figure 2](visualization/figures/umap-viz-merfish-pp.png)
