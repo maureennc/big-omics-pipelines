@@ -1,6 +1,6 @@
 # About
 
-I have created this code repository as a shared resource for the Center for Brain Immunology and Glia (BIG), the Neuroscience department at the University of Virginia, and the broader scientific research community. BIG is a community of biomedical researchers dedicated to the investigation of inflammatory processes across neurological diseases, including infection and neurodegeneration. This repository houses a collection of data pipelines and example workflows put together to support the  diverse transcriptomic and spatial biology experiments performed in the BIG Center.
+I have developed this code repository as a shared resource for the Center for Brain Immunology and Glia (BIG), the Neuroscience department at the University of Virginia, and the broader scientific research community. BIG is a community of biomedical researchers dedicated to the investigation of inflammatory processes across neurological diseases, including infection and neurodegeneration. This repository houses a collection of data pipelines and example workflows put together to support the computational analysis of diverse transcriptomic and spatial biology experiments performed in the BIG Center.
 
 ![MERFISH figure 1](visualization/figures/merfish-spatial-scatter.png)
 
@@ -26,16 +26,16 @@ Run cellranger and perform single-cell analysis on our in-house 10x Genomics dat
 ![single-cell figure 2](visualization/figures/rna-velocity.png)
    
 ## 6. `snRNA-seq-data`
-Includes basic and in-depth analysis workflows using two datasets using genetic mouse models of Alzheimer's Disease (Lukens lab). The workflow for single nuclei RNA-sequencing data is very similar to single-cell, but with differences in the cell type composition due to the prep's ability to isolate nuclei from cells that do not otherwise dissociate well from tissue (neurons, astrocytes, etc) in addition to immune cells. For nuclear data there are additional considerations like increased sparsity and QC parameters such as lower mitochondrial read fraction. Analysis performed in Python and visualization in R.
+Includes basic and in-depth analysis workflows using two datasets using transgenic mouse models of Alzheimer's Disease (Lukens lab). The workflow for single nuclei RNA-sequencing data is very similar to single-cell, but with differences in the cell type composition due to the prep's ability to isolate nuclei from cells that do not otherwise dissociate well from tissue (neurons, astrocytes, etc) in addition to immune cells. For nuclear data there are additional considerations like increased sparsity and QC parameters such as lower mitochondrial read fraction. Analysis performed in Python and visualization in R.
    
 
 # Other
-## 1. `envs`
+## 1. `visualization`
+This section is subdivided into scripts and figures related to visualizing high-dimensional data. Also see my [quick-guide instructions](visualization/instructions/vizgen-vizualizer-software-instructions.md) for using Vizgen's `Vizualizer` software for (1) interacting with MERFISH data, (2) importing processed .hdf5 files (cleaned and annotated data) into the software, and (3) using the GUI to create ad export polygon geometries for custom spatial analyses using spatial coordinates for compatibility with single-cell workflows.
+
+## 2. `envs`
 This section contains .yaml files for the conda virtual environments used on AWS, Rivanna HPC, and my local device (MacBook, M1 Max). Documenting specific versions of different packages is key for reproducibility.
 
-## 2. `tools`
+## 3. `tools`
 This section houses scripts for using and manipulating data with different bioinformatics tools for single-cell analysis, including cellranger, velocyto, scrublet, and scvi-tools.
-   
-## 3. `visualization`
-This section is subdivided into scripts and figures related to visualizing high-dimensional data. Also see my [quick-guide instructions](visualization/instructions/vizgen-vizualizer-software-instructions.md) for using Vizgen's `Vizualizer` software for (1) interacting with MERFISH data, (2) importing processed .hdf5 files (cleaned and annotated data) into the software, and (3) using the GUI to create ad export polygon geometries for custom spatial analyses using spatial coordinates for compatibility with single-cell workflows.
 
