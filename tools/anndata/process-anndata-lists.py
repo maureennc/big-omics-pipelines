@@ -7,16 +7,11 @@ Created on Tue Jan  2 12:15:55 2024
 """
 
 import os
-from pathlib import Path
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
 import scanpy as sc
 sc.set_figure_params(scanpy = True, dpi = 150, dpi_save = 400)
-
-import squidpy as sq
 import scrublet as scr
 
 # environment = 'sc'

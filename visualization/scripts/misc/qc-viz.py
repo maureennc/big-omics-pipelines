@@ -44,10 +44,10 @@ def plot_qc1(adata_list):
         df_qc = df_qc.melt(var_name='QC Metric', value_name='Value')
         df_qc['Sample'] = f'Sample {i+1}'
 
-        # Append to the master DataFrame
+
         qc_df = pd.concat([qc_df, df_qc], ignore_index=True)
 
-        # Plotting for the current sample
+
         g = sns.FacetGrid(df_qc, col='QC Metric', sharex=False, sharey=False)
         g.map_dataframe(sns.histplot, x='Value')
 
@@ -150,12 +150,11 @@ def create_var_df(adata_list):
     var_df = pd.DataFrame()
     
     for i, adata in enumerate(adata_list):
-        # Assuming 'mean_counts', 'pct_dropout_by_counts', 'n_cells_by_counts' are columns in adata.var
+
         df_var = adata.var[['mean_counts', 'pct_dropout_by_counts', 'n_cells_by_counts']].copy()
         df_var = df_var.reset_index().melt(id_vars='index', var_name='Metric', value_name='Value')
         df_var['Sample'] = f'Sample {i+1}'
 
-        # Append to the master DataFrame
         var_df = pd.concat([var_df, df_var], ignore_index=True)
     
     return var_df
@@ -172,32 +171,30 @@ var_df = create_var_df(adata_list)
 ## QC for Cells
 
 def plot_obs_metrics(obs_df, adata_list):
-    # Combine all metrics into one DataFrame for FacetGrid
+
     combined_df = pd.DataFrame()
     for i, _ in enumerate(adata_list):
         sample_name = f'Sample {i+1}'
         obs_sample_df = obs_df[obs_df['Sample'] == sample_name]
         combined_df = pd.concat([combined_df, obs_sample_df], ignore_index=True)
 
-    # Define the metrics for plotting
+
     obs_histogram_metrics = ['transcript_count', 'total_counts', 'log1p_total_counts', 'n_genes_by_counts', 'log1p_n_genes_by_counts', 'volume', 'solidity', 'anisotropy', 'pct_counts_in_top_50_genes']
 
-    # Create a FacetGrid for all metrics with three columns
+
     g = sns.FacetGrid(combined_df, col='Metric', hue='Sample', col_order=obs_histogram_metrics,
-                      sharex=False, sharey=False, height=4, aspect=1.5, col_wrap=3)  # Set col_wrap to 3 for three columns
+                      sharex=False, sharey=False, height=4, aspect=1.5, col_wrap=3)  
+    
     g.map_dataframe(sns.histplot, 'Value', kde=True).add_legend()
 
-    # Remove grid lines and set titles
+
     for ax in g.axes.flatten():
-        ax.grid(False)  # Remove grid lines
+        ax.grid(False) 
         ax.set_title(ax.get_title().replace('Metric = ', ''), fontsize=10)
 
     plt.show()
 
-# Example usage
 plot_obs_metrics(obs_df, adata_list)
-
-
 
 
 ##################
@@ -205,29 +202,25 @@ plot_obs_metrics(obs_df, adata_list)
 ## QC for Genes
 
 def plot_var_metrics(var_df, adata_list):
-    # Combine all metrics into one DataFrame for FacetGrid
     combined_df = pd.DataFrame()
     for i, _ in enumerate(adata_list):
         sample_name = f'Sample {i+1}'
         var_sample_df = var_df[var_df['Sample'] == sample_name]
         combined_df = pd.concat([combined_df, var_sample_df], ignore_index=True)
 
-    # Define the metrics for plotting
     var_histogram_metrics = ['mean_counts', 'pct_dropout_by_counts', 'n_cells_by_counts']
 
-    # Create a FacetGrid for all metrics with three columns
     g = sns.FacetGrid(combined_df, col='Metric', hue='Sample', col_order=var_histogram_metrics,
-                      sharex=False, sharey=False, height=4, aspect=1.5, col_wrap=1)  # Set col_wrap to 3 for three columns
+                      sharex=False, sharey=False, height=4, aspect=1.5, col_wrap=1)  
+    
     g.map_dataframe(sns.histplot, 'Value', kde=True).add_legend()
 
-    # Remove grid lines and set titles
     for ax in g.axes.flatten():
         ax.grid(False)  # Remove grid lines
         ax.set_title(ax.get_title().replace('Metric = ', ''), fontsize=10)
 
     plt.show()
 
-# Example usage
 plot_var_metrics(var_df, adata_list)
 
 
@@ -281,7 +274,6 @@ def plot_n_genes_per_counts(adata_list):
         plt.ylabel('Count')
         plt.show()
 
-# Example usage
 plot_n_genes_per_counts(adata_list)
 
 
