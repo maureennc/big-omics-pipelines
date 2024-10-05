@@ -31,7 +31,7 @@ Includes basic and in-depth analysis workflows using two datasets using transgen
 
 # Other
 ## 1. `visualization`
-This section is subdivided into scripts and figures related to visualizing high-dimensional data. Also see my [quick-guide instructions](visualization/instructions/vizgen-vizualizer-software-instructions.md) for using Vizgen's `Vizualizer` software for (1) interacting with MERFISH data, (2) importing processed .hdf5 files (cleaned and annotated data) into the software, and (3) using the GUI to create ad export polygon geometries for custom spatial analyses using spatial coordinates for compatibility with single-cell workflows.
+This section is subdivided into scripts and figures related to visualizing high-dimensional data. Also see my [quick-guide instructions](visualization/instructions/vizgen-vizualizer-software-instructions.md) for using Vizgen's `Vizualizer` software for (1) interacting with MERFISH data, (2) importing processed .hdf5 files (cleaned and annotated data) into the software, and (3) using the GUI to create and export polygon geometries for custom spatial analyses using spatial coordinates for compatibility with single-cell workflows.
 
 ## 2. `envs`
 This section contains .yaml files for the conda virtual environments used on AWS, Rivanna HPC, and my local device (MacBook, M1 Max). Documenting specific versions of different packages is key for reproducibility.
