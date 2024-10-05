@@ -7,10 +7,6 @@ Created on Wed Apr  3 14:06:17 2024
 """
 
 import os
-from pathlib import Path
-import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
-import seaborn as sns
 import pandas as pd
 import numpy as np
 import scanpy as sc
@@ -25,8 +21,7 @@ data_dir = '/Users/maureen/Documents/experiments/merfish/analysis/E003-E007-E008
 
 adata = sc.read_h5ad(os.path.join(data_dir, 'scvi-trained_A-annotated.h5ad'))
 
-
-################################################################################################################################
+###############################################################################
 
 # SPLIT SAMPLES FOR INTERACTIVE VIEWING
 
@@ -35,15 +30,14 @@ E003 = adata[adata.obs['sample'] == 'E003-infected'].copy()
 E007 = adata[adata.obs['sample'] == 'E007-infected'].copy()
 E008 = adata[adata.obs['sample'] == 'E008-naive'].copy()
 
-# NEED TO EDIT THIS PART; instead added a new identifier column
 ## Remove barcode suffix for compatibility with Vizualizer
-E003.obs['identifier'] = E003.obs.index.str.replace("-E003-infected", "")
-E007.obs['identifier'] = E007.obs.index.str.replace("-E007-infected", "")
-E008.obs['identifier'] = E008.obs.index.str.replace("-E008-infected", "")
+E003.obs.index = E003.obs.index.str.replace("-E003-infected", "", regex=False)
+E007.obs.index = E007.obs.index.str.replace("-E007-infected", "", regex=False)
+E008.obs.index = E008.obs.index.str.replace("-E008-infected", "", regex=False)
 
+###############################################################################
 
-# NEED TO EDIT THIS PART (ADATA.WRITE) TO NOT INCLUDE SUFFIX
-## Save individual annotated datasets for analysis in Vizualizer
+# EXPORT
 
 save_dir = '/Users/maureen/Documents/experiments/merfish/analysis/E003-E007-E008/vizualizer/annotated_h5ad'
 
@@ -55,12 +49,13 @@ E008.X = csr_matrix(E008.X)
 #E007.write_h5ad(os.path.join(save_dir, 'E007-trained_A-annotated.hdf5'))
 #E008.write_h5ad(os.path.join(save_dir, 'E008-trained_A-annotated.hdf5'))
 
-################################################################################################################################
+###############################################################################
 
-# CREATE REGIONS OF INTEREST USING VIZUALIZER SOFTWARE
+# CREATE REGIONS OF INTEREST USING VIZGEN VIZUALIZER SOFTWARE
 
+## Use polygon tool in GUI to draw custom ROI and create polygon geometry csv files for compatibility with AnnData
 
-################################################################################################################################
+###############################################################################
 
 # IMPORT GEOMETRY CSV FILES
 
@@ -81,7 +76,7 @@ E007_clusters = E007_roi[E007_roi['group'] == 'clusters'].copy()
 ## E008-naive
 E008_regions = pd.read_csv(os.path.join(coord_dir, 'E008-polygon-coordinates.csv'))
 
-################################################################################################################################
+###############################################################################
 
 # CROP FOLDED TISSUE
 
@@ -107,9 +102,9 @@ E007.obs['cropped'] = False
 
 for _, row in E007_crop.iterrows():
     polygon = row['geometry']
-    is_cropped = [polygon.contains(Point(x, y)) for x, y in E007.obsm['spatial']]  # Create a boolean mask for cells within the current polygon
+    is_cropped = [polygon.contains(Point(x, y)) for x, y in E007.obsm['spatial']]  
     
-    E007.obs['cropped'] |= is_cropped ### Now, E007.obs['cropped'] is True for cells inside any of the polygons, and False otherwise
+    E007.obs['cropped'] |= is_cropped 
 
 E007 = E007[E007.obs['cropped'] == True].copy()
 
@@ -118,7 +113,7 @@ E007 = E007[E007.obs['cropped'] == True].copy()
 E008.obs['cropped'] = False
 
 
-################################################################################################################################
+###############################################################################
 
 # ANNOTATE CELLS WITHIN INFLAMMATORY CLUSTER GEOMETRIES
 
@@ -129,9 +124,9 @@ E003.obs['inflammatory_foci'] = False
 
 for _, row in E003_clusters.iterrows():
     polygon = row['geometry']
-    is_inflammatory_foci = [polygon.contains(Point(x, y)) for x, y in E003.obsm['spatial']]  # Create a boolean mask for cells within the current polygon
+    is_inflammatory_foci = [polygon.contains(Point(x, y)) for x, y in E003.obsm['spatial']]  
     
-    E003.obs['inflammatory_foci'] |= is_inflammatory_foci ### Now, E003.obs['inflammatory_foci'] is True for cells inside any of the polygons, and False otherwise
+    E003.obs['inflammatory_foci'] |= is_inflammatory_foci 
 
 
 ## E007
@@ -149,7 +144,7 @@ for _, row in E007_clusters.iterrows():
 ## E008
 E008.obs['inflammatory_foci'] = False
 
-################################################################################################################################
+###############################################################################
 
 # ANNOTATE CELLS WITHIN NAIVE BRAIN REGIONS
 
@@ -169,14 +164,14 @@ E008.obs['region_of_interest'] = E008.obs['region_of_interest'].replace("", np.n
 
 E008.obs.region_of_interest.value_counts(dropna=False)
 
-################################################################################################################################
+###############################################################################
 
 # RE-CONCATENATE ANNDATA FROM SPLIT ANNOTATED SAMPLES
 
 ## Address suffices first
 E003.obs.index = E003.obs.index.str.replace('-E003-infected', '')
 E007.obs.index = E007.obs.index.str.replace('-E007-infected', '')
-#E008.obs.index = E008.obs.index.str.replace('-E008-naive', '') # NEED TO EDIT TO NOT DO THIS PART; EXPORTED VERSION CORRUPTED
+E008.obs.index = E008.obs.index.str.replace('-E008-naive', '')
 
 print(E003.obs.head())
 print(E007.obs.head())
@@ -192,7 +187,7 @@ adata.obs.head()
 infected = E003.concatenate(E007, batch_key='sample', batch_categories=['E003', 'E007'] )
 infected.obs.head()
 
-################################################################################################################################
+###############################################################################
 
 # EXPORT
 
@@ -203,9 +198,9 @@ infected.write_h5ad(os.path.join(save_dir, 'infected-model_A-roi-annotated.h5ad'
 E008.write_h5ad(os.path.join(save_dir, 'naive-model_A-roi-annotated.h5ad'))
 
 
-## test
+## test import
 #test = sc.read_h5ad(os.path.join(save_dir, 'naive-model_A-roi-annotated.h5ad'))
 
-################################################################################################################################
+###############################################################################
 
 
