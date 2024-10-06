@@ -49,12 +49,14 @@ Perform segmentation, data processing, and computational analysis on in-house ME
 
 ![Figure 3](visualization/figures/merfish.png)
 
+
 ### 3. `nanostring-cosmx-data`
 Prepare and analyze Nanostring CosMx SMI data. The example workflow features Nanostring demo data and a mouse brain dataset from an aging-associated Neuro-COVID19 project (Lukens lab). CosMx data is pre-processed using AtoMx software with cellpose segmentation before transferring to an AWS S3 bucket for subsequent processing using a group-specific cloud-computing setup. Data exploration and analysis performed in Python.
 
 - **[CosMx data pipeline](https://github.com/maureennc/big-omics-pipelines/tree/main/nanostring-cosmx-data)**
 
 ![Figure 4](visualization/figures/cosmx.png)
+
 
 ### 4. `nanostring-geomx-data`
 Prepare and analyze Nanostring GeoMx Digital Spatial Profiler (DSP) data. ROI-based spatial data is analyzed using the `GeoMx tools` Bioconductor package. Workflow includes reading in data, filtering, Q3-normalization, and differential expression using LMMs. The featured dataset is from the mouse olfactory system during SARS-CoV-2 infection (Lukens lab). Advanced data visualization included transforming gene expression data into barycentric coordinates for three-way plotting using the [triwise](https://github.com/saeyslab/triwise) package.
@@ -69,10 +71,12 @@ Run cellranger and perform single-cell analysis on our in-house 10x Genomics dat
 
 ![Figure 5](visualization/figures/sc-rna-seq.png)
 
+
 ### 6. `snRNA-seq-data`
 Includes basic and in-depth analysis workflows using two datasets from transgenic mouse models of Alzheimer's Disease (Lukens lab). The workflow for single nuclei RNA-sequencing data is similar to single-cell, but with differences in the cell type composition due to the prep's ability to isolate nuclei from cells that do not dissociate well from tissue (neurons, astrocytes, etc.) in addition to immune cells. Additional considerations include increased sparsity and QC parameters such as lower mitochondrial read fraction.
 
 - **[snRNA-seq data pipelines](https://github.com/maureennc/big-omics-pipelines/tree/main/snRNA-seq-data)**
+
 
 ---
 
@@ -82,7 +86,7 @@ Includes basic and in-depth analysis workflows using two datasets from transgeni
 This section contains scripts and figures related to visualizing high-dimensional data. See my [quick-guide instructions](visualization/instructions/vizgen-vizualizer-software-instructions.md) for using Vizgen's `Vizualizer` software to interact with MERFISH data and export polygon geometries for custom spatial analyses.
 
 ### 2. `envs`
-This section contains .yaml files for the conda virtual environments used on AWS, [Rivanna HPC](https://www.rc.virginia.edu/userinfo/hpc/), and my local device (MacBook, M1 Max).
+This section contains .yaml files for the conda virtual environments used on AWS, UVA's [Rivanna/Afton HPC](https://www.rc.virginia.edu/userinfo/hpc/) systems, and my local device (MacBook, M1 Max).
 
 ### 3. `tools`
 This section houses scripts for using and manipulating data with different bioinformatics tools, including cellranger, velocyto, scrublet, and scvi-tools.
