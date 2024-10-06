@@ -3,35 +3,32 @@
 2. [Code](#code)
    - [Data Processing & Analysis Pipelines](#data-processing--analysis-pipelines)
    - [Additional Code Sections](#additional-code-sections)
-3. [Experimental Design Considerations](#experimental-design-considerations)
+3. [Experimental Design](#experimental-design)
    - [Technology-specific Considerations](#technology-specific-considerations)
    - [Statistical Considerations](#statistical-considerations)
    - [Wet-lab Best Practices](#wet-lab-best-practices)
-4. [Data Availability](#data-availability)
+4. [FAIR Data Principles](#fair-data-principles)
+5. [Data Availability](#data-availability)
 
 ---
 
 # About
 
-I have developed this code repository as a shared resource for the **Center for Brain Immunology and Glia (BIG)**, the Neuroscience department at the University of Virginia (UVA), and the broader scientific research community. The BIG Center at UVA is a collaborative group of biomedical researchers dedicated to the investigation of the initiation, development, and regulation of **inflammatory processes across diverse neurological states**. BIG laboratories research fundamental principles of immunology as they pertain to **preclinical experimental models** for CNS infection, Alzheimer's disease, multiple sclerosis, traumatic brain injury, stroke, and epilepsy. 
+I have developed this code repository as a shared resource for the **Center for Brain Immunology and Glia (BIG)**, the Neuroscience department at the University of Virginia (UVA), and the broader scientific research community. The BIG Center at UVA is a collaborative group of biomedical researchers dedicated to the investigation of the initiation, development, and regulation of **inflammatory processes** across diverse neurological states. BIG laboratories research fundamental principles of immunology as they pertain to preclinical experimental models for CNS infection, Alzheimer's disease, multiple sclerosis, traumatic brain injury, stroke, and epilepsy. 
 
 ## Code and Pipelines
 
-This repository houses a collection of **data pipelines** and **example workflows** to support the computational analysis of diverse **transcriptomic** and **spatial biology experiments** performed in the BIG Center. All pipelines were built using **open-source tools**, particularly within the **Python** ecosystem, and leverage the **scverse** bioinformatics framework. Tools like **Scanpy** (for single-cell RNA-seq) and **Squidpy** (for spatial transcriptomics) provide robust workflows for analyzing complex datasets. 
+This repository houses a collection of **data pipelines** and example workflows to support the computational analysis of diverse transcriptomic and **spatial biology experiments** performed in the BIG Center. All pipelines were built using **open-source tools**, particularly within the Python ecosystem, and leverage the `scverse` bioinformatics framework. Tools like `scanpy`, `squidpy`, and `scVI-tools` provide robust workflows for analyzing complex datasets. 
 
-The modularity and interoperability of these tools ensure that each pipeline can easily be adapted or scaled, making them accessible and reusable for the broader research community. By integrating well-supported open-source software, these workflows are designed to meet high standards of **reproducibility** and flexibility.
+The modularity and **interoperability** of these tools ensure that each pipeline can easily be adapted or scaled, making them accessible and reusable for the broader research community. By integrating well-supported open-source software, these workflows are designed to meet high standards of **reproducibility** and flexibility.
 
 ## Experimental Design Considerations
 
-In addition to the code, I’ve included practical suggestions for **experimental design** and **wet-lab tips** to ensure experiments are properly structured and of sufficient quality to support the desired downstream analyses. Whether you're working with **bulk RNA-seq, single-cell RNA-seq, or spatial transcriptomics**, designing the experiment with care can make all the difference in data quality and interpretability. 
-
-This section covers key topics such as the importance of **replicates** to ensure statistical robustness, the role of **control groups** to establish baseline comparisons, and **best practices** for maintaining RNA integrity throughout the experiment. By ensuring clean data collection, the bioinformatics analysis downstream is much more reliable.
+In addition to the code, I’ve included practical suggestions for **experimental design** and **wet-lab tips** to ensure experiments are properly structured and of sufficient quality to support the desired downstream analyses. Whether you're working with bulk RNA-seq, single-cell RNA-seq, or spatial transcriptomics, designing the experiment with care can make all the difference in data quality and interpretability. [This section](#experimental-design) covers key topics such as the importance of replicates to ensure statistical robustness, the role of control groups to establish baseline comparisons, and **best practices** for maintaining RNA integrity throughout the experiment. By ensuring clean data collection, the bioinformatics analysis downstream is much more reliable.
 
 ## FAIR Data Principles
 
-In line with the growing movement toward open science, the data and code shared in this repository adhere to **FAIR data principles**: **Findability, Accessibility, Interoperability, and Reusability**. These principles are designed to enhance the usability and transparency of scientific data, making it easier to share, cite, and build upon existing work. 
-
-You can read more about the FAIR principles [here](https://www.go-fair.org/fair-principles/). By adhering to these principles, I aim to make sure the datasets and code in this repository are reproducible, accessible, and therefore more valuable to the scientific community.
+In line with the growing global movement toward open science, the data and code shared and referred to in this repository adhere to **FAIR data principles**: **Findability, Accessibility, Interoperability, and Reusability**. [FAIR principles](https://www.go-fair.org/fair-principles/) are designed to enhance the usability and transparency of scientific data, making it easier to share, cite, and build upon existing work. 
 
 ![MERFISH figure 1](visualization/figures/merfish-spatial-scatter.png)
 
@@ -79,7 +76,7 @@ This section houses scripts for using and manipulating data with different bioin
 
 ---
 
-# Experimental Design Considerations
+# Experimental Design
 
 When planning your experiments, it’s critical to plan and design them in a way that directly supports the analyses you want to perform. This means thinking ahead about how your data will be processed and analyzed, and ensuring that the experimental structure allows for those goals to be met effectively.
 
@@ -98,7 +95,7 @@ What are these different transcriptomics technologies and in what contexts can t
    - **CosMx SMI**: Useful for multiplexed analysis, especially when combining transcriptomics and proteomics for spatial insights at subcellular resolution. Nanostring designs a standard mouse brain panel and allows you to spike-in probes for additional genes of interest to study specific inflammatory processes of interest. In my experience, CosMx data that we have generated has been of roughly single-cell resolution. Like with MERFISH, cellpose segmentation is supported.
    - **GeoMx DSP**: GeoMx is a strong option for region-specific analysis, especially if you are interested in studying larger tissue regions and need to combine gene expression data with morphological features (e.g., from immunohistochemistry). Similar to bulk RNA-seq, GeoMx DSP provides an averaged gene expression profile over a targeted area, but unlike bulk RNA-seq, it retains spatial context by targeting specific regions within the tissue. This allows you to connect gene expression data to tissue architecture. Additionally, GeoMx can profile both RNA and protein, providing a more detailed multimodal view of the tissue environment.
 
-## Experimental design best-practices
+## Best-practices for designing your experiment
 1. **Replicates**: Always try to include replicates in your experimental design. Replicates help smooth out technical noise, making sure that any observed differences aren’t just random errors or batch effects from sequencing. This makes your data more reliable for downstream analyses. Plus, including replicates allows you to ask more meaningful questions. For instance, with biological replicates, you can explore whether the gene expression changes you’re seeing are consistent across individuals or if there’s some variability. This gives you the ability to perform more sophisticated statistical analyses, like mixed-effects models, that can pick up on more subtle differences and help identify patterns you wouldn’t catch with just one sample.
 
 2. **Control groups / samples**: It’s important to always include control groups in your experimental design. They help you establish the statistical significance of your findings and also validate your dataset. For example, if you’re studying a mouse model of Alzheimer’s disease and are trying to understand the effect of a treatment, it’s incredibly useful to have control, undiseased brain tissue. This lets you compare healthy versus diseased conditions, so you can see how large and significant the treatment’s effects are relative to an informative baseline. Having these control comparisons is key to interpreting the real impact of your intervention as it relates to the transcriptional changes being measured.
