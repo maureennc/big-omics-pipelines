@@ -4,16 +4,13 @@
    - [Data Processing & Analysis Pipelines](#data-processing--analysis-pipelines) - Bulk RNA-seq, MERFISH, CosMx SMI, GeoMx DSP, scRNA-seq, snRNA-seq.
    - [Additional Code Sections](#additional-code-sections) - Visualizations (`visualization`), environment configurations (`envs`), and bioinformatics tools (`tools`).
 3. [Experimental Design](#experimental-design) - Guidelines for designing transcriptomic experiments to ensure quality and reproducibility.
-   - [Technology-specific Considerations](#technology-specific-considerations) - Best practices for bulk RNA-seq, single-cell/nuclei RNA-seq, and spatial transcriptomics.
-   - [Best-practices for designing your experiment](#best-practices-for-designing-your-experiment) - Recommendations for robust analyses (e.g. replicates, controls).
-   - [Wet-lab Best Practices](#wet-lab-best-practices) - Tips for preserving RNA integrity and transcriptional inhibitors.
 4. [FAIR Data Principles](#fair-data-principles) - Ensuring adherence to FAIR standards (Findability, Accessibility, Interoperability, Reusability).
 5. [Data Availability](#data-availability) - Links to publicly available datasets on GEO, most of which are generated in-house by BIG center trainees.
 ---
 
 # About
 
-I have developed this code repository as a shared resource for the **Center for Brain Immunology and Glia (BIG)**, the Neuroscience department at the University of Virginia (UVA), and the broader scientific research community. The BIG Center at UVA is a collaborative group of biomedical researchers dedicated to the investigation of the initiation, development, and regulation of **inflammatory processes** across diverse neurological states. BIG laboratories research fundamental principles of immunology as they pertain to preclinical experimental models for CNS infection, Alzheimer's disease, multiple sclerosis, traumatic brain injury, stroke, and epilepsy. 
+I have developed this code repository as a shared resource for the **Center for Brain Immunology and Glia (BIG)**, friends of the Neuroscience department at the University of Virginia (UVA), and the broader scientific research community. The BIG Center at UVA is a collaborative group of biomedical researchers dedicated to the investigation of the initiation, development, and regulation of **inflammatory processes** across diverse neurological states. BIG laboratories research fundamental principles of immunology as they pertain to preclinical experimental models for CNS infection, Alzheimer's disease, multiple sclerosis, traumatic brain injury, stroke, and epilepsy. 
 
 ## Code and Pipelines
 
@@ -96,34 +93,10 @@ This section houses scripts for using and manipulating data with different bioin
 
 When planning your experiments, it’s critical to plan and design them in a way that directly supports the analyses you want to perform. This means thinking ahead about how your data will be processed and analyzed, and ensuring that the experimental structure allows for those goals to be met effectively.
 
+See this [explanation](/experimental-design/README.md) for technology/platform-specific considerations, best-practices for designing your experiment, and important wet-lab considerations upstream of data collection.
 
-## Technology-specific considerations
-
-What are these different transcriptomics technologies and in what contexts can they be leveraged to answer a specific experimental question?
-
-1. **Bulk RNA Sequencing**: Bulk sequencing is ideal for capturing average gene expression across a tissue sample. It's a go-to method when you're studying processes that involve large populations of cells and when cellular heterogeneity is not your focus. It's particularly useful when the goal is to identify generalized gene expression profiles or pathway activity in a specific tissue (e.g., identifying differentially expressed genes in a tumor compared to healthy tissue). This method generally offers excellent detection sensitivity to biological signal since inherent noise in the dataset are averaged over many, many cells.
-
-2. **Single-Cell RNA Sequencing (scRNA-seq)**: scRNA-seq is essential when you need to explore the cellular heterogeneity within a sample. It allows for the identification of distinct cell populations and rare cell types, making it ideal for studies where understanding cell type-specific responses is critical, such as in the immune response or in tumor microenvironments. Use single-cell sequencing when your experiment requires dissecting the complexity of cellular populations, such as identifying specific cell types or states in the context of disease progression, tissue development, or immune responses.
-
-3. **Spatial Transcriptomics (e.g., MERFISH, CosMx, GeoMx DSP)**: Spatial transcriptomics is key when it’s important to know where specific gene expression occurs within the tissue. These technologies allow you to measure gene expression in situ, preserving the spatial context of the tissue. This is crucial when studying how cellular localization impacts biological processes, such as in brain tissue where neuron-glia interactions are highly spatially regulated. Use spatial transcriptomics if you're investigating the spatial organization of gene expression within a tissue. It’s particularly relevant in research areas like neurobiology, cancer biology (e.g., studying tumor-immune cell interactions), and tissue development, where spatial architecture plays a critical role in cell function and behavior.
-
-   - **MERFISH**: Ideal for generating high-resolution spatial maps of gene expression, MERFISH provides near single-cell resolution and exhibits high sensitivity, making it well-suited for detecting small but biologically meaningful changes, such as subtle shifts in transcription factor expression. To maximize the utility of MERFISH, designing a targeted gene panel is key. This panel should be informed by bulk and single-cell RNA-seq data from your specific tissue and disease context, ensuring that you include genes that allow for the identification of unbiased and biologically relevant cell populations.
-   - **CosMx SMI**: Useful for multiplexed analysis, especially when combining transcriptomics and proteomics for spatial insights at subcellular resolution. Nanostring designs a standard mouse brain panel and allows you to spike-in probes for additional genes of interest to study specific inflammatory processes of interest. In my experience, CosMx data that we have generated has been of roughly single-cell resolution. Like with MERFISH, cellpose segmentation is supported.
-   - **GeoMx DSP**: GeoMx is a strong option for region-specific analysis, especially if you are interested in studying larger tissue regions and need to combine gene expression data with morphological features (e.g., from immunohistochemistry). Similar to bulk RNA-seq, GeoMx DSP provides an averaged gene expression profile over a targeted area, but unlike bulk RNA-seq, it retains spatial context by targeting specific regions within the tissue. This allows you to connect gene expression data to tissue architecture. Additionally, GeoMx can profile both RNA and protein, providing a more detailed multimodal view of the tissue environment.
-
-## Best-practices for designing your experiment
-1. **Replicates**: Always try to include replicates in your experimental design. Replicates help smooth out technical noise, making sure that any observed differences aren’t just random errors or batch effects from sequencing. This makes your data more reliable for downstream analyses. Plus, including replicates allows you to ask more meaningful questions. For instance, with biological replicates, you can explore whether the gene expression changes you’re seeing are consistent across individuals or if there’s some variability. This gives you the ability to perform more sophisticated statistical analyses, like mixed-effects models, that can pick up on more subtle differences and help identify patterns you wouldn’t catch with just one sample.
-
-2. **Control groups / samples**: It’s important to always include control groups in your experimental design. They help you establish the statistical significance of your findings and also validate your dataset. For example, if you’re studying a mouse model of Alzheimer’s disease and are trying to understand the effect of a treatment, it’s incredibly useful to have control, undiseased brain tissue. This lets you compare healthy versus diseased conditions, so you can see how large and significant the treatment’s effects are relative to an informative baseline. Having these control comparisons is key to interpreting the real impact of your intervention as it relates to the transcriptional changes being measured.
-
-## General wet-lab best-practices
-1. **RNase-free environments**: RNA is extremely fragile and prone to degradation by RNases, which are abundant in most lab environments. Try your best to ensure an RNase-free environment by using dedicated RNase-free reagents and equipment. Products like RNase Zap are essential for cleaning surfaces, pipettes, and even gloves to minimize contamination. RNase-free tubes, tips, and solutions should be used from start to finish to prevent RNA degradation and maintain sample integrity. While these extra precautions may seem repetitive, they are fundamental to producing and reproducing results you can trust.
-
-2. **Transcriptional inhibitors**: When conducting RNA-sequencing experiments, especially from brain tissue, consider using transcriptional inhibitors like Actinomycin D. For sequencing microglia, I like to add Actinomycin D to my media (3μM) and during the enzymatic digestion stage (45 μM) to inhibit the upregulation of immediate early activation genes associated with dissue dissociation techniques and  FACs sorting. Microglia in particular have been shown to have an activation signature induced by the prep alone and validated using techniques like ribo-tag.
-
-   
 # Data availability
-The datasets associated with the code in this repository are available on GEO (Gene Expression Omnibus):
+The following datasets directly associated with the code and figures in this repository are available on GEO (Gene Expression Omnibus):
 
 - **GSE146680**: Gasdermin-D-dependent IL-1 alpha release from microglia promotes protective immunity during chronic *Toxoplasma gondii* infection.  
   [Link to dataset](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE146680)
@@ -141,4 +114,6 @@ The following dataset is publicly available on Nanostring's website:
 - **CosMx SMI Mouse Brain FFPE Dataset**: Coronal hemisphere, CosMx Mouse Neuroscience Panel
   [Link to dataset](https://nanostring.com/products/cosmx-spatial-molecular-imager/ffpe-dataset/cosmx-smi-mouse-brain-ffpe-dataset/)
 
-Some datasets related to the code in this repository are part of ongoing research by doctoral trainees and have yet to be published. As these projects are completed and the datasets are deposited into public repositories, this section will be updated with the relevant links. Please check back for updates.
+Some of the datasets associated with the code and figures in this repository are part of ongoing research by graduate student trainees and have yet to be published. As these projects are completed and the datasets are deposited into public repositories, this section will be updated with the relevant links.
+
+See **[instructions](https://www.ncbi.nlm.nih.gov/geo/info/seq.html#deposit) and [YouTube video](https://www.youtube.com/watch?v=RqkRPcF38Lw)** on how to deposit 'omics data to GEO.

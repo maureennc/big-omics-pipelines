@@ -5,24 +5,12 @@ Created on Tue Mar 19 13:57:34 2024
 
 @author: maureen
 
-Virtual environment: 'sc-seq'
-
-This script performs the following steps, in order:
-    1. Import cellranger output files from custom genome build (for downstream trajectory inference analysis)
-    2. Separate and prepare protein and gene expression data
-    2. Filtering and QC
-    3. Doublet detection and removal
-    4. Concatenation
-    5. Normalization
-    6. Highly-variable gene selection for dimensionality reduction
-    7. Exports processed AnnData as 'cite-seq-pp-concat-hvg.h5ad'
-    8. Exports processed AnnData as 'cite-seq-pp-concat-full.h5ad'
-
 """
+# Virtual environment: 'sc-seq'
 
 # CITE-SEQ PRE-PROCESSING
 
-################################################################################################################################
+###############################################################################
 
 # IMPORT PACKAGES AND SETTINGS
 

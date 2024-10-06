@@ -1,7 +1,4 @@
 # Bulk-RNA-Sequencing
-Bulk RNA Sequencing Pipeline for Harris lab naive vs. T. gondii-infected samples. Rivanna HPC used for bash and R scripting.
-
-![Figure 2](../visualization/figures/bulk-rna-seq.png)
 
 ## Computational Workflow
 
@@ -20,5 +17,6 @@ Set input (first path) and output file location (-o) for forward (e.g. sample_R1
 Salmon is used for genome pseudo-alignment. Quant files are exported by Salmon and imported into R using tximport.
 
 ### Step 4: Perform Analysis in R using `04_analyze-bulk-seq-data.R` as a template.
-An .Rmd script, `04_analyze-bulk-seq-data.Rmd` is also provided for differential expression at transcript- and gene-level analyses.
+An .Rmd script, `04_analyze-bulk-seq-data.Rmd` is also provided for differential expression at transcript- and gene-level analyses. This script performs differential expression with DESeq2 and exports FPKM matrix for downstream use with MERFISH panel design.
 
+![Figure 2](../visualization/figures/bulk-rna-seq.png)

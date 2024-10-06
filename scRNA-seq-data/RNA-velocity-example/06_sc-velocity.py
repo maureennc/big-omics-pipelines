@@ -120,7 +120,7 @@ sc.pl.umap(vdata, color = ['cluster'], legend_loc = 'on data', legend_fontsize=1
 
 ###############################################################################
 
-# REGRESS OUT MITOCHONDRIAL AND RIBOSOMAL GENES
+# REGRESS OUT EFFECT OF TOTAL COUNTS
 sc.pp.regress_out(vdata, ['total_counts'])
 
 ###############################################################################
