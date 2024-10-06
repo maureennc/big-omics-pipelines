@@ -46,7 +46,7 @@ Start with .fastq files from paired-end sequencing and run a trimmomatic-salmon 
 
 
 ### 2. `merfish-data`
-Perform segmentation, data processing, and computational analysis on in-house MERFISH data collected from control and *T. gondii*-infected mouse brains (Harris lab). Segmentation is performed on the Rivanna/Afton HPC using the cellpose 2.0 cyto2 algorithm via the Vizgen post-processing tool (VPT). After segmentation, transcripts are partitioned into cell boundaries. The dataset is imported into a Python environment and assembled into an AnnData object for single-cell and spatial analysis. See [MERFISH poster PDF](visualization/figures/MERFISH_HPC_Pipeline_Cowan_RCSymposium2024_poster.pdf) for a comprehensive overview of the computational workflow and pilot study results using a custom-designed 338-gene MERFISH panel.
+Perform segmentation, data processing, and computational analysis on in-house MERFISH data collected from control and *T. gondii*-infected mouse brains (Harris lab). Segmentation is performed on the Rivanna/Afton HPC using the cellpose 2.0 cyto2 algorithm via the Vizgen post-processing tool (VPT). After segmentation, transcripts are partitioned into cell boundaries. The dataset is imported into a Python environment and assembled into an AnnData object for single-cell and spatial analysis. See [MERFISH poster PDF](visualization/figures/MERFISH_HPC_Pipeline_Cowan_RCSymposium2024_poster.pdf) for a comprehensive overview of the computational workflow and **pilot study results** using a custom-designed 338-gene MERFISH panel.
 
 - **[MERFISH data pipeline](https://github.com/maureennc/big-omics-pipelines/tree/main/merfish-data)**
 
@@ -136,9 +136,9 @@ The datasets associated with the code in this repository are available on GEO (G
   
 - **GSE207173**: Single-cell sequencing of splenocytes following *T. gondii* infection.  
   [Link to dataset](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE207173)
-  
+
+The following dataset is publicly available on Nanostring's website:
 - **CosMx SMI Mouse Brain FFPE Dataset**: Coronal hemisphere, CosMx Mouse Neuroscience Panel
   [Link to dataset](https://nanostring.com/products/cosmx-spatial-molecular-imager/ffpe-dataset/cosmx-smi-mouse-brain-ffpe-dataset/)
-
 
 Some datasets related to the code in this repository are part of ongoing research by doctoral trainees and have yet to be published. As these projects are completed and the datasets are deposited into public repositories, this section will be updated with the relevant links. Please check back for updates.
