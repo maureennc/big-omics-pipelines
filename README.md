@@ -1,21 +1,14 @@
 # Table of Contents
 1. [About](#about) - Overview of the repository and its purpose, including the BIG Center and research focus.
-2. [Code](#code) - Details on pipelines for transcriptomic and spatial biology analysis.
-   - [Data Processing & Analysis Pipelines](#data-processing--analysis-pipelines) - Bulk RNA-seq, MERFISH, CosMx, etc.
-      - [bulk-RNA-seq-data](#1-bulk-rna-seq-data)
-      - [merfish-data](#2-merfish-data)
-      - [nanostring-cosmx-data](#3-nanostring-cosmx-data)
-      - [nanostring-geomx-data](#4-nanostring-geomx-data)
-      - [scRNA-seq-data](#5-scrna-seq-data)
-      - [snRNA-seq-data](#6-snrna-seq-data)
-   - [Additional Code Sections](#additional-code-sections) - Scripts for visualizations (`visualization`), environment configurations (`envs`), and using specific open source bioinformatics tools (`tools`).
-3. [Experimental Design](#experimental-design) - Guidelines for designing transcriptomic experiments to ensure data quality and reproducibility.
+2. [Code](#code) - Pipelines for transcriptomic and spatial biology analysis.
+   - [Data Processing & Analysis Pipelines](#data-processing--analysis-pipelines) - Bulk RNA-seq, MERFISH, CosMx SMI, GeoMx DSP, scRNA-seq, snRNA-seq.
+   - [Additional Code Sections](#additional-code-sections) - Visualizations (`visualization`), environment configurations (`envs`), and bioinformatics tools (`tools`).
+3. [Experimental Design](#experimental-design) - Guidelines for designing transcriptomic experiments to ensure quality and reproducibility.
    - [Technology-specific Considerations](#technology-specific-considerations) - Best practices for bulk RNA-seq, single-cell/nuclei RNA-seq, and spatial transcriptomics.
-   - [Best-practices for designing your experiment](#best-practices-for-designing-your-experiment) - Recommendations for structuring experiments to support robust analyses (e.g. biological replicates, controls).
-   - [Wet-lab Best Practices](#wet-lab-best-practices) - Practical tips for maintaining RNA integrity and using transcriptional inhibitors in the lab.
-4. [FAIR Data Principles](#fair-data-principles) - Ensuring the data adheres to FAIR standards (Findability, Accessibility, Interoperability, and Reusability).
-5. [Data Availability](#data-availability) - Links to publicly available datasets on GEO referenced in this repo.
-
+   - [Best-practices for designing your experiment](#best-practices-for-designing-your-experiment) - Recommendations for robust analyses (e.g. replicates, controls).
+   - [Wet-lab Best Practices](#wet-lab-best-practices) - Tips for preserving RNA integrity and transcriptional inhibitors.
+4. [FAIR Data Principles](#fair-data-principles) - Ensuring adherence to FAIR standards (Findability, Accessibility, Interoperability, Reusability).
+5. [Data Availability](#data-availability) - Links to publicly available datasets on GEO, most of which are generated in-house by BIG center trainees.
 ---
 
 # About
