@@ -2,28 +2,19 @@
 1. [About](#about) - Overview of the repository and its purpose, including the BIG Center and research focus.
 2. [Code](#code) - Details on pipelines for transcriptomic and spatial biology analysis.
    - [Data Processing & Analysis Pipelines](#data-processing--analysis-pipelines) - Bulk RNA-seq, MERFISH, CosMx, etc.
-      - [bulk-RNA-seq-data](#1-bulk-rna-seq-data) - Processing pipeline for bulk RNA-seq data, including differential expression analysis.
-      - [merfish-data](#2-merfish-data) - Workflow for processing MERFISH data, including segmentation and single-cell analysis.
-      - [nanostring-cosmx-data](#3-nanostring-cosmx-data) - Pipeline for CosMx data analysis, including a basic spatial analysis workflow.
-      - [nanostring-geomx-data](#4-nanostring-geomx-data) - Workflow for GeoMx DSP data, including region-specific spatial transcriptomics.
-      - [scRNA-seq-data](#5-scrna-seq-data) - Analysis pipeline for single-cell RNA sequencing, focusing on immune cells.
-      - [snRNA-seq-data](#6-snrna-seq-data) - Processing and analysis workflows for single-nuclei RNA-seq data.
-   - [Additional Code Sections](#additional-code-sections) - Scripts for visualizations, environment configurations, and using specific open source bioinformatics tools.
-      - [visualization](#1-visualization) - Scripts and figures related to high-dimensional data visualizations.
-      - [envs](#2-envs) - YAML files for setting up well-configured `conda` environments across different platforms.
-      - [tools](#3-tools) - Scripts for manipulating and analyzing data using various bioinformatics tools.
+      - [bulk-RNA-seq-data](#1-bulk-rna-seq-data)
+      - [merfish-data](#2-merfish-data)
+      - [nanostring-cosmx-data](#3-nanostring-cosmx-data)
+      - [nanostring-geomx-data](#4-nanostring-geomx-data)
+      - [scRNA-seq-data](#5-scrna-seq-data)
+      - [snRNA-seq-data](#6-snrna-seq-data)
+   - [Additional Code Sections](#additional-code-sections) - Scripts for visualizations (`visualization`), environment configurations (`envs`), and using specific open source bioinformatics tools (`tools`).
 3. [Experimental Design](#experimental-design) - Guidelines for designing transcriptomic experiments to ensure data quality and reproducibility.
-   - [Technology-specific Considerations](#technology-specific-considerations) - Best practices for Bulk RNA-seq, Single-cell RNA-seq, and spatial transcriptomics.
-      - [Bulk RNA Sequencing](#bulk-rna-sequencing) - When and how to use bulk RNA-seq for capturing population-level gene expression.
-      - [Single-Cell RNA Sequencing](#single-cell-rna-sequencing) - When to apply single-cell RNA-seq for exploring cellular heterogeneity.
-      - [Spatial Transcriptomics](#spatial-transcriptomics) - How to use MERFISH, CosMx, and GeoMx DSP for spatially resolved transcriptomics.
-   - [Best-practices for designing your experiment](#best-practices-for-designing-your-experiment) - Recommendations for structuring experiments to support robust analyses.
-      - [Replicates](#replicates) - Importance of including replicates to minimize technical noise.
-      - [Control groups / samples](#control-groups--samples) - Why control groups are critical for validating results.
+   - [Technology-specific Considerations](#technology-specific-considerations) - Best practices for bulk RNA-seq, single-cell/nuclei RNA-seq, and spatial transcriptomics.
+   - [Best-practices for designing your experiment](#best-practices-for-designing-your-experiment) - Recommendations for structuring experiments to support robust analyses (e.g. biological replicates, controls).
    - [Wet-lab Best Practices](#wet-lab-best-practices) - Practical tips for maintaining RNA integrity and using transcriptional inhibitors in the lab.
 4. [FAIR Data Principles](#fair-data-principles) - Ensuring the data adheres to FAIR standards (Findability, Accessibility, Interoperability, and Reusability).
 5. [Data Availability](#data-availability) - Links to publicly available datasets on GEO referenced in this repo.
-
 
 ---
 
