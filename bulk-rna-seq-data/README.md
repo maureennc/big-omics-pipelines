@@ -1,6 +1,8 @@
 # Bulk-RNA-Sequencing
 Bulk RNA Sequencing Pipeline for Harris lab naive vs. T. gondii-infected samples. Rivanna HPC used for bash and R scripting.
 
+![Figure 2](../visualization/figures/bulk-rna-seq.png)
+
 ## Computational Workflow
 
 ### Step 1: Run `01_trimmomatic.sh`

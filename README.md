@@ -85,7 +85,7 @@ Includes basic and in-depth analysis workflows using two datasets from transgeni
 This section contains scripts and figures related to visualizing high-dimensional data. See my [quick-guide instructions](visualization/instructions/vizgen-vizualizer-software-instructions.md) for using Vizgen's `Vizualizer` software to interact with MERFISH data and export polygon geometries for custom spatial analyses.
 
 ### 2. `envs`
-This section contains .yaml files for the conda virtual environments used on AWS, Rivanna HPC, and my local device (MacBook, M1 Max).
+This section contains .yaml files for the conda virtual environments used on AWS, [Rivanna HPC](https://www.rc.virginia.edu/userinfo/hpc/), and my local device (MacBook, M1 Max).
 
 ### 3. `tools`
 This section houses scripts for using and manipulating data with different bioinformatics tools, including cellranger, velocyto, scrublet, and scvi-tools.
@@ -116,7 +116,7 @@ What are these different transcriptomics technologies and in what contexts can t
 
 2. **Control groups / samples**: It’s important to always include control groups in your experimental design. They help you establish the statistical significance of your findings and also validate your dataset. For example, if you’re studying a mouse model of Alzheimer’s disease and are trying to understand the effect of a treatment, it’s incredibly useful to have control, undiseased brain tissue. This lets you compare healthy versus diseased conditions, so you can see how large and significant the treatment’s effects are relative to an informative baseline. Having these control comparisons is key to interpreting the real impact of your intervention as it relates to the transcriptional changes being measured.
 
-## Wet-lab best-practices
+## General wet-lab best-practices
 1. **RNase-free environments**: RNA is extremely fragile and prone to degradation by RNases, which are abundant in most lab environments. Try your best to ensure an RNase-free environment by using dedicated RNase-free reagents and equipment. Products like RNase Zap are essential for cleaning surfaces, pipettes, and even gloves to minimize contamination. RNase-free tubes, tips, and solutions should be used from start to finish to prevent RNA degradation and maintain sample integrity. While these extra precautions may seem repetitive, they are fundamental to producing and reproducing results you can trust.
 
 2. **Transcriptional inhibitors**: When conducting RNA-sequencing experiments, especially from brain tissue, consider using transcriptional inhibitors like Actinomycin D. For sequencing microglia, I like to add Actinomycin D to my media (3μM) and during the enzymatic digestion stage (45 μM) to inhibit the upregulation of immediate early activation genes associated with dissue dissociation techniques and  FACs sorting. Microglia in particular have been shown to have an activation signature induced by the prep alone and validated using techniques like ribo-tag.
