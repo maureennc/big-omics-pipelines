@@ -1,7 +1,7 @@
 # MERFISH Computational Workflow and Analysis Poster
-See [MERFISH poster PDF](visualization/figures/MERFISH_HPC_Pipeline_Cowan_RCSymposium2024_poster.pdf) for a comprehensive overview and pilot data results of the computational workflow and **pilot study results** using a custom-designed 338-gene MERFISH panel.
+See [MERFISH poster PDF](../visualization/figures/MERFISH_HPC_Pipeline_Cowan_RCSymposium2024_poster.pdf) for a comprehensive overview and pilot data results of the computational workflow and **pilot study results** using a custom-designed 338-gene MERFISH panel.
 
-![Figure 1](visualization/figures/merfish-spatial-scatter.png)
+![Figure 1](../visualization/figures/merfish-spatial-scatter.png)
 
 # Code sections
 
@@ -30,4 +30,4 @@ Here are guidelines from Vizgen for bulk-seq FPKM considerations
 # Considerations for data quality
 In my discussions with Vizgen support, they have recommend >30k transcripts per FOV as indication of a successful MERFISH experiment. Lower transcript count can correspond to degraded RNA, and a good indication of this is a poor transcript density across FOV. Counterintuitively, I learned that **optical crowding** can be diagnosed by a reduction in transcripts per FOV relative to surrounding FOV.
 
-![MERFISH Poster Preview](visualization/figures/MERFISH_HPC_Pipeline_Cowan_RCSymposium2024_poster.png)
+![MERFISH Poster Preview](../visualization/figures/MERFISH_HPC_Pipeline_Cowan_RCSymposium2024_poster.png)
