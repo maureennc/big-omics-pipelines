@@ -3,7 +3,7 @@
 2. [Code](#code) - Pipelines for transcriptomic and spatial biology analysis.
    - [Data Processing & Analysis Pipelines](#data-processing--analysis-pipelines) - Bulk RNA-seq, MERFISH, CosMx SMI, GeoMx DSP, scRNA-seq, snRNA-seq.
    - [Additional Code Sections](#additional-code-sections) - Visualizations (`visualization`), environment configurations (`envs`), and bioinformatics tools (`tools`).
-3. [Experimental Design](#experimental-design) - Guidelines for designing transcriptomic experiments to ensure quality and reproducibility.
+3. [Experimental Design](#experimental-design) - Guidelines for picking the right technology and designing transcriptomic experiments to ensure quality and reproducibility.
 4. [FAIR Data Principles](#fair-data-principles) - Ensuring adherence to FAIR standards (Findability, Accessibility, Interoperability, Reusability).
 5. [Data Availability](#data-availability) - Links to publicly available datasets on GEO, most of which are generated in-house by BIG center trainees.
 ---
@@ -98,6 +98,8 @@ This section houses scripts for using and manipulating data with different bioin
 When planning your experiments, it’s critical to plan and design them in a way that directly supports the analyses you want to perform. This means thinking ahead about how your data will be processed and analyzed, and ensuring that the experimental structure allows for those goals to be met effectively.
 
 See this [explanation](/experimental-design/README.md) for technology/platform-specific considerations, best-practices for designing your experiment, and important wet-lab considerations upstream of data collection.
+
+---
 
 # Data availability
 The following datasets directly associated with the code and figures in this repository are available on GEO (Gene Expression Omnibus):

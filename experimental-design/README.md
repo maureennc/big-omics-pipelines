@@ -1,3 +1,5 @@
+# Experimental design
+
 ## Technology-specific considerations
 
 **What are these different transcriptomics technologies and in what contexts can they be leveraged to answer a specific experimental question?**
