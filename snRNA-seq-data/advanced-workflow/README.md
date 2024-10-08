@@ -1,50 +1,74 @@
-# Advanced snRNA-seq analysis workflow
+---
+
+# Advanced snRNA-seq Analysis Workflow
 
 ## Background
 
-### Experimental design
-This advanced example workflow uses a snRNA-seq dataset of mouse hippocampus. PS19 mice (model for frontotemporal dementia) were subjected to mild traumatic brain injury (TBI), which is known to exacerbate  tau pathology in humans. An experimental AAV is used to rescue pathology and sequencing reveals changes to different cell populations, with an emphasis on neuronal populations and transcriptional signatures associated with pathology vs. health.
+### Experimental Design
+This advanced workflow focuses on a snRNA-seq dataset from the mouse hippocampus. PS19 mice (a model for frontotemporal dementia) were subjected to mild traumatic brain injury (TBI), known to exacerbate tau pathology in humans. An experimental AAV therapy was used to rescue pathology, and sequencing reveals transcriptional changes across cell populations, particularly in neuronal populations, highlighting signatures associated with disease vs. health.
 
-The workflow in this folder is adapted from an iterative workflow comprising of multiple phases of analysis, annotation, and visualization in preparation for manuscript submission.
+The workflow is designed as an iterative process, involving multiple phases of analysis, annotation, and visualization to prepare for manuscript submission.
 
 ---
 
 ## Scripts
 
-###: `01_cellranger.sh`
-This Azenta script runs the Cell Ranger pipeline for processing single-cell RNA-seq data, specifying memory, cores, read lengths, and the reference transcriptome. It automates the counting step for a specific sample, preparing the data for downstream analysis.
-
-### `02_pre-processing.py`
-Performs quantile-based QC filtering to remove low-quality cells, detect doublets using Scrublet, and apply ceiling/floor thresholds for total and gene counts, ribosomal, and mitochondrial content. The cleaned data is normalized, highly variable genes (HVGs) are selected, and the processed dataset is exported for further analysis.
-
-### `03_train-multi-models.ipynb`
-Trains eight different scVI models based on varying filtering and doublet exclusion criteria, utilizing HVGs to control noise in UMAP visualization. After model selection and clustering, these models are integrated with full-genome data for downstream differential expression analysis.
-
-### `04_eda-explore-model-results.py`
-Conducts exploratory data analysis (EDA) on snRNA-seq data, including SCVI model visualization, UMAP plotting, clustering, and QC metrics evaluation. Outputs include CSV reports summarizing cluster statistics, QC data, and doublet scores across models.
-
-### `05_eda-explore-data.py`
-Explores gene expression patterns and QC metrics in the TBI dataset, generating UMAP visualizations for key genes and treatment groups, while analyzing doublet scores and cell distributions across treatment conditions.
-
-### `06_annotate-clusters.py`
-Processes TBI snRNA-seq data with SCVI to generate UMAPs, annotate clusters by cell types, and visualize gene markers. The script outputs summary plots and annotated datasets for further downstream analysis.
-
-### `07_merge-hvg-full.py`
-Integrates HVG annotations and full-genome data by matching cell barcodes between two datasets. Relevant metadata is transferred, and the updated full-genome dataset is saved for subsequent differential expression testing.
-
-### `08_differential-expression.py`
-Performs Wald test-based differential expression analysis across cell types and treatment groups, filtering results and generating heatmaps of up- and downregulated genes, enabling visual exploration of cell-type-specific gene expression changes.
-
-### `09_data-visualization.py`
-Generates key visualizations for TBI analysis figures, including UMAPs, differential expression heatmaps, cell type compositions, and gene expression plots related to neuronal health and pathology. Visualizations are tailored for publication-ready figures.
-
-### `10_export-anndata-components.py`
-Prepares snRNA-seq data for R/Seurat interoperability by cleaning annotations, recalibrating clusters, and exporting data layers (counts, log1p, normalized matrices) alongside dimensional reductions and metadata. Outputs ensure smooth cross-environment analysis.
-
-### `11_seurat-interoperability.R`
-Manually constructs Seurat objects from exported AnnData data, integrating raw, normalized, and log-transformed counts with metadata and dimensional reductions (PCA, UMAP, latent embeddings). Produces full-genome and HVG Seurat objects for visualization and downstream analysis in R.
+### `01_cellranger.sh`
+Runs the Cell Ranger pipeline to process single-cell RNA-seq data. It specifies memory, cores, read lengths, and the reference transcriptome, automating the counting step for a specific sample to prepare it for downstream analysis.
 
 ---
 
-## Data availability
-This section will be updated soon with a link to the dataset in GEO.
+### `02_pre-processing.py`
+Applies quantile-based quality control (QC) filtering to remove low-quality cells, detect doublets using Scrublet, and apply thresholds for total/gene counts, ribosomal content, and mitochondrial content. The cleaned data is normalized, HVGs are selected, and the processed dataset is exported.
+
+---
+
+### `03_train-multi-models.ipynb`
+Trains eight different scVI models based on varying filtering and doublet exclusion criteria, using HVGs to control noise in UMAP visualization. Models are then integrated with full-genome data for downstream differential expression analysis.
+
+---
+
+### `04_eda-explore-model-results.py`
+Performs exploratory data analysis (EDA), visualizing SCVI models, UMAP plots, clustering, and QC metrics. Outputs include CSV reports summarizing cluster statistics, QC data, and doublet scores across multiple models.
+
+---
+
+### `05_eda-explore-data.py`
+Analyzes gene expression patterns and QC metrics in the TBI dataset, generating UMAP visualizations for key genes and treatment groups, while assessing doublet scores and cell distribution across conditions.
+
+---
+
+### `06_annotate-clusters.py`
+Processes TBI snRNA-seq data with SCVI to generate UMAPs, annotate clusters with cell types, and visualize gene markers. Annotated datasets and summary plots are exported for downstream analysis.
+
+---
+
+### `07_merge-hvg-full.py`
+Integrates HVG annotations with full-genome data by matching cell barcodes between datasets. Metadata is transferred, and the updated full-genome dataset is saved for differential expression testing.
+
+---
+
+### `08_differential-expression.py`
+Performs Wald test-based differential expression analysis across cell types and treatment groups, filtering results and generating heatmaps for visual exploration of gene expression changes by cell type.
+
+---
+
+### `09_data-visualization.py`
+Generates key visualizations for the TBI analysis, including UMAPs, differential expression heatmaps, cell type compositions, and gene expression plots related to neuronal health and pathology. Visuals are prepared for publication-ready figures.
+
+---
+
+### `10_export-anndata-components.py`
+Prepares snRNA-seq data for Seurat by exporting data layers (counts, log1p, normalized matrices) along with dimensional reductions and metadata. Ensures smooth interoperability between Python and R.
+
+---
+
+### `11_seurat-interoperability.R`
+Constructs Seurat objects from the exported AnnData data, integrating raw, normalized, and log-transformed counts with metadata and dimensional reductions (PCA, UMAP, latent embeddings). Full-genome and HVG Seurat objects are created for visualization and downstream analysis in R.
+
+---
+
+## Data Availability
+A link to the dataset in GEO will be added soon.
+
+---
