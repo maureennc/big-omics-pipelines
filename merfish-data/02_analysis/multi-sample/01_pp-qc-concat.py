@@ -251,7 +251,7 @@ adata.obs
 
 ## Normalization and Log1p transformation after concatenation
 adata.layers['counts'] = adata.X.copy()
-sc.pp.normalize_total(adata, target_sum = 1e4)
+sc.pp.normalize_total(adata, target_sum = 1e4) ## update to medidan
 adata.layers['normalized'] = adata.X.copy()
 sc.pp.log1p(adata)
 adata.layers['log1p'] = adata.X.copy()
