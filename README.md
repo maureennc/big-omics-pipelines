@@ -20,10 +20,6 @@ The modularity and **interoperability** of these tools ensure that each pipeline
 
 ![Figure 1](visualization/figures/merfish-spatial-scatter.png)
 
-## Experimental Design Considerations
-
-In addition to the code, I’ve included practical suggestions for **experimental design** and **wet-lab tips** to ensure experiments are properly structured and of sufficient quality to support the desired downstream analyses. Whether you're working with bulk RNA-seq, single-cell RNA-seq, or spatial transcriptomics, designing the experiment with care can make all the difference in data quality and interpretability. [This section](#experimental-design) covers key topics such as the importance of replicates to ensure statistical robustness, the role of control groups to establish baseline comparisons, and **best practices** for maintaining RNA integrity throughout the experiment. By ensuring clean data collection, the bioinformatics analysis downstream is much more reliable.
-
 ## FAIR Data Principles
 
 In line with the growing global movement toward open science, the data and code shared and referred to in this repository adhere to **FAIR data principles**: **Findability, Accessibility, Interoperability, and Reusability**. [FAIR principles](https://www.go-fair.org/fair-principles/) are designed to enhance the usability and transparency of scientific data, making it easier to share, cite, and build upon existing work. 
@@ -93,14 +89,6 @@ This section houses scripts for using and manipulating data with different bioin
 
 ---
 
-# Experimental Design
-
-When planning your experiments, it’s critical to plan and design them in a way that directly supports the analyses you want to perform. This means thinking ahead about how your data will be processed and analyzed, and ensuring that the experimental structure allows for those goals to be met effectively.
-
-See this [explanation](/experimental-design/README.md) for technology/platform-specific considerations, best-practices for designing your experiment, and important wet-lab considerations upstream of data collection.
-
----
-
 # Data availability
 The following datasets directly associated with the code and figures in this repository are available on GEO (Gene Expression Omnibus):
 
@@ -123,3 +111,12 @@ The following dataset is publicly available on Nanostring's website:
 Some of the datasets associated with the code and figures in this repository are part of ongoing research by graduate student trainees and have yet to be published. As these projects are completed and the datasets are deposited into public repositories, this section will be updated with the relevant links.
 
 See **[instructions](https://www.ncbi.nlm.nih.gov/geo/info/seq.html#deposit) and [YouTube video](https://www.youtube.com/watch?v=RqkRPcF38Lw)** on how to deposit 'omics data to GEO.
+
+
+---
+
+# Experimental Design
+
+When planning your experiments, it’s critical to plan and design them in a way that directly supports the analyses you want to perform. This means thinking ahead about how your data will be processed and analyzed, and ensuring that the experimental structure allows for those goals to be met effectively.
+
+See this [explanation](/experimental-design/README.md) for technology/platform-specific considerations, best-practices for designing your experiment, and important wet-lab considerations upstream of data collection.
