@@ -12,7 +12,7 @@ import scanpy as sc
 import scipy.sparse
 from scipy.sparse import csr_matrix
 
-################################################################################################################################
+###############################################################################
 
 # IMPORT
 
@@ -22,7 +22,7 @@ data_dir = "/Users/maureen/Documents/projects/lukens-lab/ana/2024_tbi-snrna-seq/
 adata = sc.read_h5ad(os.path.join(data_dir, '4-tbi-annotated-full.h5ad'))
 adata.X = adata.layers['log1p'].copy()
 
-################################################################################################################################
+###############################################################################
 
 # PREPARE DATA
 
@@ -44,7 +44,7 @@ cluster_mapping = {old_label: rank for rank, old_label in enumerate(value_counts
 adata.obs['leiden'] = adata.obs['leiden_scVI'].map(cluster_mapping)
 print(adata.obs['leiden'].value_counts())
 
-################################################################################################################################
+###############################################################################
 
 # EXPORT COUNTS MATRIX LAYERS
 
@@ -70,7 +70,7 @@ for layer_name in layers_to_export:
         print(f"'{layer_name}' layer not saved in AnnData")
 
 
-################################################################################################################################
+###############################################################################
 
 # EXPORT METADATA
 
@@ -79,7 +79,7 @@ save_dir = '/Users/maureen/Documents/projects/lukens-lab/ana/2024_tbi-snrna-seq/
 adata.obs.to_csv(os.path.join(save_dir, 'cell-metadata.csv'))
 adata.var.to_csv(os.path.join(save_dir, 'feature-metadata.csv'))
 
-################################################################################################################################
+###############################################################################
 
 # EXPORT DIMENSINONAL REDUCTIONS
 
@@ -96,7 +96,7 @@ umap = pd.DataFrame(adata.obsm['X_umap'], index=adata.obs_names)
 umap.to_csv(os.path.join(save_dir, 'umap.csv'))
 
 
-################################################################################################################################
+###############################################################################
 
 # NEIGHBORS GRAPH
 ## Takes a long time; can recalculate in Seurat
@@ -107,7 +107,7 @@ umap.to_csv(os.path.join(save_dir, 'umap.csv'))
 #distances = pd.DataFrame.sparse.from_spmatrix(adata.obsp['distances'], index=adata.obs_names, columns=adata.obs_names)
 #distances.to_csv(os.path.join(save_dir, 'distances.csv'))
 
-################################################################################################################################
+###############################################################################
 
 # EXPORT UPDATED H5AD
 
@@ -116,4 +116,4 @@ save_dir = '/Users/maureen/Documents/projects/lukens-lab/ana/2024_tbi-snrna-seq/
 adata.X = csr_matrix(adata.X)
 adata.write_h5ad(os.path.join(save_dir, '2024_tbi-snrna-seq-cleaned-full.h5ad'))
 
-################################################################################################################################
+###############################################################################
