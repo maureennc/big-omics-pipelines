@@ -6,6 +6,7 @@
 3. [Experimental Design](#experimental-design) - Guidelines for picking the right technology and designing transcriptomic experiments to ensure quality and reproducibility.
 4. [FAIR Data Principles](#fair-data-principles) - Ensuring adherence to FAIR standards (Findability, Accessibility, Interoperability, Reusability).
 5. [Data Availability](#data-availability) - Links to publicly available datasets on GEO, most of which are generated in-house by BIG center trainees.
+
 ---
 
 # About
