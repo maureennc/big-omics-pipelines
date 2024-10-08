@@ -11,19 +11,13 @@
 
 # About
 
-I have developed this code repository as a shared resource for the **Center for Brain Immunology and Glia (BIG)**, friends of the Neuroscience department at the University of Virginia (UVA), and the broader scientific research community. The BIG Center at UVA is a collaborative group of biomedical researchers dedicated to the investigation of the initiation, development, and regulation of **inflammatory processes** across diverse neurological states. BIG laboratories research fundamental principles of immunology as they pertain to preclinical experimental models for CNS infection, Alzheimer's disease, multiple sclerosis, traumatic brain injury, stroke, and epilepsy. 
+I have developed this code repository as a shared resource for the **Center for Brain Immunology and Glia (BIG)**. The BIG Center at UVA is a collaborative group of biomedical researchers dedicated to the investigation of the initiation, development, and regulation of **inflammatory processes** across diverse neurological states. BIG laboratories research fundamental principles of immunology as they pertain to preclinical experimental models for CNS infection, Alzheimer's disease, multiple sclerosis, traumatic brain injury, stroke, and epilepsy. 
 
 ## Code and Pipelines
 
-This repository houses a collection of **data pipelines** and example workflows to support the computational analysis of diverse transcriptomic and **spatial biology experiments** performed in the BIG Center. All pipelines were built using **open-source tools**, particularly within the Python ecosystem, and leverage the `scverse` bioinformatics framework. Tools like `scanpy`, `squidpy`, and `scVI-tools` provide robust workflows for analyzing complex datasets. 
-
-The modularity and **interoperability** of these tools ensure that each pipeline can easily be adapted or scaled, making them accessible and reusable for the broader research community. By integrating well-supported open-source software, these workflows are designed to meet high standards of **reproducibility** and flexibility.
+This repository houses a collection of **data pipelines** and example workflows to support the computational analysis of diverse transcriptomic and **spatial biology experiments** performed in the BIG Center. All pipelines were built using **open-source tools**, particularly within the Python ecosystem, and leverage the `scverse` bioinformatics framework. The modularity and **interoperability** of these tools ensure that each pipeline can easily be adapted or scaled.
 
 ![Figure 1](visualization/figures/merfish-spatial-scatter.png)
-
-## FAIR Data Principles
-
-In line with the growing global movement toward open science, the data and code shared and referred to in this repository adhere to **FAIR data principles**: **Findability, Accessibility, Interoperability, and Reusability**. [FAIR principles](https://www.go-fair.org/fair-principles/) are designed to enhance the usability and transparency of scientific data, making it easier to share, cite, and build upon existing work. 
 
 ---
 
@@ -38,6 +32,7 @@ Start with .fastq files from paired-end sequencing and run a trimmomatic-salmon 
 
 ![Figure 2](visualization/figures/bulk-rna-seq.png)
 
+---
 
 ### 2. `merfish-data`
 Perform segmentation, data processing, and computational analysis on in-house MERFISH data collected from control and *T. gondii*-infected mouse brains (Harris lab). Segmentation is performed on the Rivanna/Afton HPC using the cellpose 2.0 cyto2 algorithm via the Vizgen post-processing tool (VPT). After segmentation, transcripts are partitioned into cell boundaries. The dataset is imported into a Python environment and assembled into an AnnData object for single-cell and spatial analysis. See [MERFISH poster PDF](visualization/figures/MERFISH_HPC_Pipeline_Cowan_RCSymposium2024_poster.pdf) for a comprehensive overview of the computational workflow and **pilot study results** using a custom-designed 338-gene MERFISH panel.
@@ -46,6 +41,7 @@ Perform segmentation, data processing, and computational analysis on in-house ME
 
 ![Figure 3](visualization/figures/merfish.png)
 
+---
 
 ### 3. `nanostring-cosmx-data`
 Prepare and analyze Nanostring CosMx SMI data. The example workflow features Nanostring demo data and a mouse brain dataset from an aging-associated Neuro-COVID19 project (Lukens lab). CosMx data is pre-processed using AtoMx software with cellpose segmentation before transferring to an AWS S3 bucket for subsequent processing using a group-specific cloud-computing setup. Data exploration and analysis performed in Python.
@@ -54,12 +50,14 @@ Prepare and analyze Nanostring CosMx SMI data. The example workflow features Nan
 
 ![Figure 4](visualization/figures/cosmx.png)
 
+---
 
 ### 4. `nanostring-geomx-data`
 Prepare and analyze Nanostring GeoMx Digital Spatial Profiler (DSP) data. ROI-based spatial data is analyzed using the `GeoMx tools` Bioconductor package. Workflow includes reading in data, filtering, Q3-normalization, and differential expression using LMMs. The featured dataset is from the mouse olfactory system during SARS-CoV-2 infection (Lukens lab). Advanced data visualization included transforming gene expression data into barycentric coordinates for three-way plotting using the [triwise](https://github.com/saeyslab/triwise) package.
 
 - **[GeoMx data pipeline](https://github.com/maureennc/big-omics-pipelines/tree/main/nanostring-cosmx-data)**
 
+---
 
 ### 5. `scRNA-seq-data`
 Run cellranger and perform single-cell analysis on our in-house 10x Genomics data generated in collaboration with  [UVA's Sequencing Core](https://med.virginia.edu/gatc/). The dataset features immune cells FACS-sorted from *T. gondii*-infected mouse brains (Harris lab). Data cleaning involves filtering on QC parameters using a dynamic quantile approach and scrublet for doublet detection. This section includes example scripts for cell type annotation and identification and differential expression. Trajectory inference analysis (RNA velocity) is performed to examine the microglial transition from homeostatic to a neurodegeneration-associated transcriptional state during parasitic infection using tools including samtools, velocyto, and scVelo. Analysis and visualization performed in Python and R.
@@ -68,6 +66,7 @@ Run cellranger and perform single-cell analysis on our in-house 10x Genomics dat
 
 ![Figure 5](visualization/figures/sc-rna-seq.png)
 
+---
 
 ### 6. `snRNA-seq-data`
 Includes basic and in-depth analysis workflows using two datasets from transgenic mouse models of Alzheimer's Disease (Lukens lab). The workflow for single nuclei RNA-sequencing data is similar to single-cell, but with differences in the cell type composition due to the prep's ability to isolate nuclei from cells that do not dissociate well from tissue (neurons, astrocytes, etc.) in addition to immune cells. Additional considerations include increased sparsity and QC parameters such as lower mitochondrial read fraction.
@@ -87,6 +86,20 @@ This section contains .yaml files for the conda virtual environments used on AWS
 
 ### 3. `tools`
 This section houses scripts for using and manipulating data with different bioinformatics tools, including cellranger, velocyto, scrublet, and scvi-tools.
+
+---
+
+# Experimental Design
+
+When planning your experiments, it’s critical to plan and design them in a way that directly supports the analyses you want to perform. This means thinking ahead about how your data will be processed and analyzed, and ensuring that the experimental structure allows for those goals to be met effectively.
+
+See this [explanation](/experimental-design/README.md) for technology/platform-specific considerations, best-practices for designing your experiment, and important wet-lab considerations upstream of data collection.
+
+---
+
+## FAIR Data Principles
+
+In line with the growing global movement toward open science, the data and code shared and referred to in this repository adhere to **FAIR data principles**: **Findability, Accessibility, Interoperability, and Reusability**. [FAIR principles](https://www.go-fair.org/fair-principles/) are designed to enhance the usability and transparency of scientific data, making it easier to share, cite, and build upon existing work. 
 
 ---
 
@@ -115,9 +128,3 @@ See **[instructions](https://www.ncbi.nlm.nih.gov/geo/info/seq.html#deposit) and
 
 
 ---
-
-# Experimental Design
-
-When planning your experiments, it’s critical to plan and design them in a way that directly supports the analyses you want to perform. This means thinking ahead about how your data will be processed and analyzed, and ensuring that the experimental structure allows for those goals to be met effectively.
-
-See this [explanation](/experimental-design/README.md) for technology/platform-specific considerations, best-practices for designing your experiment, and important wet-lab considerations upstream of data collection.

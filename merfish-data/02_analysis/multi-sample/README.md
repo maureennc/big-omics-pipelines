@@ -1,7 +1,7 @@
 # MERFISH Analysis
 
 ## Overview
-This repository contains scripts for processing and analyzing MERFISH (Multiplexed Error-Robust Fluorescence In Situ Hybridization) data, focusing on spatially-resolved gene expression patterns and immune responses in various brain regions.
+This repository contains scripts for processing and analyzing MERFISH (Multiplexed Error-Robust Fluorescence In Situ Hybridization) data, focusing on spatially-resolved gene expression patterns and immune activation in various brain regions.
 
 ## Scripts
 
@@ -35,32 +35,24 @@ This repository contains scripts for processing and analyzing MERFISH (Multiplex
 - Train two integration models with different combinations of three MERFISH samples: E003 (infected), E007 (infected), and E008 (naive).
 - The first model integrates all three samples (essentially a concatenation) to capture the overall cellular landscape.
 - The second model focuses solely on the two infected samples to potentially enhance model performance.
-- This step is necessary due to previous splitting of the samples for Vizualizer compatibility. Although the samples could have been concatenated directly, splitting was performed to adhere to the limitations of the Vizgen Vizualizer software, which only allows for one experiment sample at a time.
+- This step (or separate concatenation) is necessary due to previous splitting of the samples for Vizualizer compatibility. Although the samples could have been concatenated directly, splitting was performed to adhere to the limitations of the Vizgen Vizualizer software, which only allows for one experiment sample at a time.
 
 ### `06_spatial-de-clusters.py`
-- Perform spatially-resolved differential expression analysis, focusing on immune cell types within spatial regions of interest (ROIs) defined by the `inflammatory_foci` annotation.
+Using infected mouse brain samples perform spatially-resolved differential expression analysis, focusing on immune cell types within spatial regions of interest (ROIs) defined by the `inflammatory_foci` annotation.
+
 - Use two AnnData objects: `adata_concat`, which encompasses all samples for broad comparisons, and `adata_infected`, which targets differential expression specifically within infected samples.
 - Conduct differential expression analyses using the Wilcoxon rank-sum test, providing insights into gene activity across specified conditions.
 - Focus on immune cell types and inflammatory foci, crucial for understanding the spatial dynamics of immune responses in tissues.
 - Generate visualizations to depict gene expression differences, highlighting significant findings in the context of spatial biology.
 
 ### `07_spatial-de-naive.py`
-- Utilize the naive sample of MERFISH data to perform spatially-resolved differential expression analysis across different brain region annotations.
-- Assess immune response profiles in various regions, revealing strong priming of the choroid plexus for immune responses.
 
-- **Brain Regions**:
-  - Cortex
-  - Hippocampus
-  - Striatum
-  - Choroid Plexus
-  
-- Import the naive sample annotated with the aforementioned regional brain regions for analysis.
-- Define several gene lists, including cell death genes, cytokines, and other relevant gene sets for evaluating immune responses.
-- Employ the Wilcoxon rank-sum test to identify differentially expressed genes across the specified brain regions.
-- Visualize results using matrix plots and bar plots to showcase the significant gene counts per region.
-- Highlight strong immune activation in the choroid plexus, emphasizing its role in the immune response.
+Using the naive mouse brain sample perform spatially-resolved differential expression analysis across several brain regions (Cortex, Hippocampus, Striatum, Choroid Plexus) to assess immune response profiles, revealing strong priming of the choroid plexus for immune responses.
 
-This script provides insights into the spatial context of immune cell activity in the brain, which is critical for understanding neuroimmune interactions in health and disease.
+- Import the naive sample annotated with regional brain regions for analysis.
+- Define gene lists, including cell death genes and cytokines, for evaluating immune responses.
+- Employ the Wilcoxon rank-sum test to identify differentially expressed genes across the specified regions.
+- Visualize results using matrix and bar plots to showcase significant gene counts per region, highlighting strong immune activation in the choroid plexus.
 
 ---
 
