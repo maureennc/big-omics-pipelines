@@ -1,7 +1,7 @@
 # MERFISH Data
 See [MERFISH poster PDF](../visualization/figures/MERFISH_HPC_Pipeline_Cowan_RCSymposium2024_poster.pdf) for a comprehensive overview and pilot data results of the computational workflow and **pilot study results** using a custom-designed 338-gene MERFISH panel.
 
-- See poster code for [segmentation](01_vpt_segmentation) and [analysis](02_analysis/multi-sample/).
+- See poster code for [segmentation](01_vpt-segmentation) and [analysis](02_analysis/multi-sample/).
 
 ![MERFISH Poster Preview](../visualization/figures/MERFISH_HPC_Pipeline_Cowan_RCSymposium2024_poster.png)
 
