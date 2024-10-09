@@ -11,7 +11,7 @@
 
 # About
 
-I have developed this code repository as a shared resource for the **Center for Brain Immunology and Glia (BIG)**. The BIG Center at UVA is a collaborative group of biomedical researchers dedicated to the investigation of the initiation, development, and regulation of **inflammatory processes** across diverse neurological states. BIG laboratories research fundamental principles of immunology as they pertain to preclinical experimental models for CNS infection, Alzheimer's disease, multiple sclerosis, traumatic brain injury, stroke, and epilepsy. 
+I am developing this code repository as a shared resource for the **Center for Brain Immunology and Glia (BIG)**. The BIG Center at UVA is a collaborative group of biomedical researchers dedicated to the investigation of the initiation, development, and regulation of **inflammatory processes** across diverse neurological states. BIG laboratories research fundamental principles of immunology as they pertain to preclinical experimental models for CNS infection, Alzheimer's disease, multiple sclerosis, traumatic brain injury, stroke, and epilepsy. 
 
 ## Code and Pipelines
 
