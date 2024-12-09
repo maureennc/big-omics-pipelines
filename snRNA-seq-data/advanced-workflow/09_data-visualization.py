@@ -379,7 +379,7 @@ sc.pl.dotplot(cdata, var_names = genes, groupby = 'condition', standard_scale = 
 
 # UMAPs
 
-sc.pl.umap(adata, color = 'cluster', title = 'Cluster')
+sc.pl.umap(adata, color = 'cluster', title = 'Cluster', save = '_all-clusters.pdf')
 
 ###############################################################################
 
@@ -393,7 +393,7 @@ cluster_markers
 gene_list = cluster_markers.groupby('group').head(3)
 genes = gene_list['names'].tolist()
 
-sc.pl.dotplot(adata, var_names = genes, groupby = 'cluster')
+sc.pl.dotplot(adata, var_names = genes, groupby = 'cluster', save = '_all-clusters-dotplot.pdf')
 
 ###############################################################################
 
@@ -469,4 +469,17 @@ sc.pl.violin(microglia, keys = ['Cd68'], groupby = 'condition', rotation = 45, u
 sc.pl.violin(microglia, keys = ['H2-Ab1'], groupby = 'condition', rotation = 45, use_raw = True, save = '_microglia-condition-H2-Ab1.pdf')
 sc.pl.violin(microglia, keys = ['P2ry12'], groupby = 'condition', rotation = 45, use_raw = True, save = '_microglia-condition-P2ry12.pdf')
 
+###############################################################################
+###############################################################################
+
+# SUPPLEMENTAL TABLES
+
+###############################################################################
+
+# CELL TYPE MARKERS
+
+save_dir = '/Users/maureen/Documents/projects/lukens-lab/ana/2024_tbi-snrna-seq/submission_01/tables/wilcoxon-clusters'
+sc.tl.rank_genes_groups(adata, groupby = 'cell_type', method = 'wilcoxon')
+markers = sc.get.rank_genes_groups_df(adata, group = None)
+markers.to_csv(os.path.join(save_dir, 'cell_type-markers-wilcoxon.csv'), index = False)
 ###############################################################################
